@@ -164,6 +164,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setupFormHandling();
     updateLanguageButton();
     setupMobileNav();
+    setDynamicVhUnit();
 });
 
 // Language Toggle Functionality
@@ -369,6 +370,16 @@ window.addEventListener('load', function() {
         });
     }, 500);
 });
+
+// Handle 100vh on mobile safely
+function setDynamicVhUnit() {
+    const setVh = () => {
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}vh`);
+    };
+    setVh();
+    window.addEventListener('resize', setVh);
+}
 
 // Add CSS for loading state
 const style = document.createElement('style');
