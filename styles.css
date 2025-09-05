@@ -546,8 +546,8 @@ html[dir="rtl"] body {
 
 /* RTL fixes for timeline layout */
 html[dir="rtl"] .timeline-item:nth-child(odd) {
-    right: 50%;
-    left: auto;
+    right: auto;
+    left: 50%;
     padding-right: 0px;
     padding-left: 30px;
 }
