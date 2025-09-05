@@ -810,7 +810,7 @@ html[dir="rtl"] .timeline-item:nth-child(even)::before {
         width: 100%;
         left: 0 !important;
         padding-left: 50px !important;
-        padding-right: 50px !important;
+        padding-right: 0 !important;
     }
     
     .timeline-item::before { left: 12.5px !important; }
@@ -818,10 +818,10 @@ html[dir="rtl"] .timeline-item:nth-child(even)::before {
     /* RTL overrides on mobile */
     html[dir="rtl"] .timeline::before { right: 20px; left: auto; }
     html[dir="rtl"] .timeline-item {
-        right: 0 !important;
+        right: 20px !important;
         left: auto !important;
         padding-right: 50px !important;
-        padding-left: 0 !important;
+        padding-left: px !important;
     }
     html[dir="rtl"] .timeline-item::before { right: 12.5px !important; left: auto !important; }
     
