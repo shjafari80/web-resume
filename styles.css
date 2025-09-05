@@ -14,16 +14,17 @@ body {
     background-color: #f8f9fa;
     color: #2c3e50;
     line-height: 1.6;
-    overflow-x: hidden;
+    overflow: hidden;
+}
+
+/* RTL font override */
+html[dir="rtl"] body {
+    font-family: 'Vazir', 'Inter', sans-serif;
 }
 
 /* Language Toggle Button */
-.language-toggle {
-    position: fixed;
-    top: 30px;
-    right: 30px;
-    z-index: 1000;
-}
+.nav-actions { display: flex; align-items: center; gap: 15px; }
+.language-toggle { position: relative; }
 
 .lang-btn {
     position: relative;
@@ -47,18 +48,19 @@ body {
 
 .silver-fade {
     position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-    animation: silverSlide 3s infinite;
+    top: -50%;
+    left: -150%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+    transform: rotate(18deg);
+    animation: silverSlide 3s infinite linear;
 }
 
 @keyframes silverSlide {
-    0% { left: -100%; }
-    50% { left: 100%; }
-    100% { left: 100%; }
+    0% { left: -150%; }
+    50% { left: 150%; }
+    100% { left: 150%; }
 }
 
 /* Navigation */
@@ -128,6 +130,9 @@ body {
 /* Main Content */
 .main-content {
     margin-top: 80px;
+    height: calc(100vh - 80px);
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
 }
 
 /* Full Page Sections */
@@ -136,6 +141,9 @@ body {
     display: flex;
     align-items: center;
     padding: 80px 0;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    scroll-margin-top: 80px;
 }
 
 .container {

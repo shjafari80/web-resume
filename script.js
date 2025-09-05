@@ -162,6 +162,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setupLanguageToggle();
     setupSmoothScrolling();
     setupFormHandling();
+    updateLanguageButton();
 });
 
 // Language Toggle Functionality
@@ -227,6 +228,7 @@ function initializeAnimations() {
 // Smooth Scrolling
 function setupSmoothScrolling() {
     const navLinks = document.querySelectorAll('.nav-link');
+    const main = document.querySelector('.main-content');
     
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
@@ -234,9 +236,9 @@ function setupSmoothScrolling() {
             const targetId = this.getAttribute('href');
             const targetSection = document.querySelector(targetId);
             
-            if (targetSection) {
-                const offsetTop = targetSection.offsetTop - 80;
-                window.scrollTo({
+            if (targetSection && main) {
+                const offsetTop = targetSection.offsetTop - 0;
+                main.scrollTo({
                     top: offsetTop,
                     behavior: 'smooth'
                 });
