@@ -163,6 +163,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setupSmoothScrolling();
     setupFormHandling();
     updateLanguageButton();
+    setupMobileNav();
 });
 
 // Language Toggle Functionality
@@ -242,8 +243,27 @@ function setupSmoothScrolling() {
                     top: offsetTop,
                     behavior: 'smooth'
                 });
+                // close mobile menu after click
+                const navMenu = document.querySelector('.nav-menu');
+                if (navMenu && navMenu.classList.contains('open')) {
+                    navMenu.classList.remove('open');
+                    const toggle = document.querySelector('.nav-toggle');
+                    if (toggle) toggle.setAttribute('aria-expanded', 'false');
+                }
             }
         });
+    });
+}
+
+// Mobile nav toggle
+function setupMobileNav() {
+    const toggle = document.querySelector('.nav-toggle');
+    const menu = document.querySelector('.nav-menu');
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener('click', () => {
+        const isOpen = menu.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
 }
 

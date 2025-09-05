@@ -84,6 +84,26 @@ html[dir="rtl"] body {
     padding: 0 30px;
 }
 
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.nav-toggle .bar {
+    width: 24px;
+    height: 2px;
+    background: #2c3e50;
+    transition: all 0.3s ease;
+}
+
 .nav-logo {
     font-size: 28px;
     font-weight: 700;
@@ -705,9 +725,24 @@ html[dir="rtl"] body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .nav-toggle { display: flex; }
+    .nav-actions { margin-left: 10px; }
     .nav-menu {
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: rgba(248, 249, 250, 0.98);
+        backdrop-filter: blur(10px);
         display: none;
+        flex-direction: column;
+        gap: 0;
+        padding: 10px 0;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.08);
     }
+    .nav-menu.open { display: flex; }
+    .nav-menu li { padding: 10px 20px; }
+    .nav-menu .nav-link { display: block; }
     
     .hero-content {
         grid-template-columns: 1fr;
