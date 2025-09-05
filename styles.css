@@ -177,7 +177,7 @@ html[dir="rtl"] body {
 /* Section Headers */
 .section-header {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 0px;
 }
 
 .section-title {
@@ -810,7 +810,7 @@ html[dir="rtl"] .timeline-item:nth-child(even)::before {
         width: 100%;
         left: 0 !important;
         padding-left: 50px !important;
-        padding-right: 0 !important;
+        padding-right: 50px !important;
     }
     
     .timeline-item::before { left: 12.5px !important; }
