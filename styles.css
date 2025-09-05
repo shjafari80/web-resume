@@ -21,6 +21,8 @@ body {
 
 html { scroll-padding-top: 80px; }
 
+:root { --nav-h: 80px; }
+
 /* RTL font override */
 html[dir="rtl"] body {
     font-family: 'Vazir', 'Inter', sans-serif;
@@ -157,10 +159,10 @@ html[dir="rtl"] body {
 
 /* Full Page Sections */
 .full-page {
-    min-height: calc(var(--vh, 1vh) * 100 - 80px);
+    min-height: calc((var(--vh, 1vh) * 100) - 80px);
     display: flex;
     align-items: center;
-    padding: 80px 0;
+    padding: 60px 0;
     scroll-snap-align: start;
     scroll-snap-stop: always;
 }
@@ -731,6 +733,12 @@ html[dir="rtl"] body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    html { scroll-padding-top: 64px; }
+    .navbar { padding: 10px 0; }
+    :root { --nav-h: 64px; }
+    .section-title { font-size: 1.8rem; }
+    .hero-title { font-size: 2.2rem; }
+    .full-page { padding: 40px 0; }
     .nav-toggle { display: flex; }
     .nav-actions { margin-left: 10px; }
     .nav-menu {

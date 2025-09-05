@@ -230,7 +230,6 @@ function initializeAnimations() {
 // Smooth Scrolling
 function setupSmoothScrolling() {
     const navLinks = document.querySelectorAll('.nav-link');
-    const main = document.querySelector('.main-content');
     
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
@@ -238,9 +237,9 @@ function setupSmoothScrolling() {
             const targetId = this.getAttribute('href');
             const targetSection = document.querySelector(targetId);
             
-            if (targetSection && main) {
-                const offsetTop = targetSection.offsetTop - 0;
-                main.scrollTo({
+            if (targetSection) {
+                const offsetTop = targetSection.getBoundingClientRect().top + window.pageYOffset;
+                window.scrollTo({
                     top: offsetTop,
                     behavior: 'smooth'
                 });
@@ -374,8 +373,8 @@ window.addEventListener('load', function() {
 // Handle 100vh on mobile safely
 function setDynamicVhUnit() {
     const setVh = () => {
-        const vh = window.innerHeight * 0.01;
-        document.documentElement.style.setProperty('--vh', `${vh}vh`);
+        const vh = window.innerHeight * 0.01; // 1% of viewport height in px
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
     };
     setVh();
     window.addEventListener('resize', setVh);
