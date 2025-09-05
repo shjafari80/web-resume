@@ -57,9 +57,9 @@ html[dir="rtl"] body {
 }
 
 @keyframes silverSlide {
-    0% { left: -150%; }
-    50% { left: 150%; }
-    100% { left: 150%; }
+    0% { left: -100%; }
+    50% { left: 100%; }
+    100% { left: 100%; }
 }
 
 /* Navigation */
@@ -129,9 +129,6 @@ html[dir="rtl"] body {
 /* Main Content */
 .main-content {
     margin-top: 80px;
-    height: calc(100vh - 80px);
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
 }
 
 /* Full Page Sections */
@@ -140,9 +137,6 @@ html[dir="rtl"] body {
     display: flex;
     align-items: center;
     padding: 80px 0;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-    scroll-margin-top: 80px;
 }
 
 .container {
