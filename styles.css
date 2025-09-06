@@ -183,7 +183,7 @@ html[dir="rtl"] body {
 .section-title {
     font-size: 3rem;
     font-weight: 700;
-    margin-bottom: 15px;
+    margin-top: 30px;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -194,6 +194,7 @@ html[dir="rtl"] body {
     font-size: 1.2rem;
     color: #6c757d;
     font-weight: 400;
+    margin-bottom: 40px;
 }
 
 /* Home Section */
@@ -619,7 +620,7 @@ html[dir="rtl"] .timeline-item:nth-child(even)::before {
 .contact-card {
     background: white;
     border-radius: 20px;
-    padding: 40px;
+    padding: 5%;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
 }
@@ -760,6 +761,7 @@ html[dir="rtl"] .timeline-item:nth-child(even)::before {
 @media (max-width: 768px) {
     html { scroll-padding-top: 64px; }
     .navbar { padding: 10px 0; }
+    .nav-logo{display: none; }
     :root { --nav-h: 64px; }
     .section-title { font-size: 1.8rem; }
     .hero-title { font-size: 2.2rem; }
@@ -839,6 +841,13 @@ html[dir="rtl"] .timeline-item:nth-child(even)::before {
 }
 
 @media (max-width: 480px) {
+
+    .nav-logo {
+    display: none;
+    }
+    .navbar{
+    position:  sticky;
+    }
     .container {
         padding: 0 20px;
     }
