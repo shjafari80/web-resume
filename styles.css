@@ -199,7 +199,7 @@ html[dir="rtl"] body {
 
 /* Home Section */
 .home-section {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    background: linear-gradient(0.35turn,#e2e6f5,#f7a086,#fcd6b5,#e5cfcf) !important;
 }
 
 .hero-content {
@@ -370,7 +370,7 @@ html[dir="rtl"] body {
 
 /* Skills Section */
 .skills-section {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    background: linear-gradient(0.35turn,#e2e6f5,#f7a086,#fcd6b5,#e5cfcf) !important;
 }
 
 .skills-grid {
@@ -489,7 +489,7 @@ html[dir="rtl"] body {
 
 /* Experience Section */
 .experience-section {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    background: linear-gradient(0.35turn,#e2e6f5,#f7a086,#fcd6b5,#e5cfcf) !important;
 }
 
 .timeline {
