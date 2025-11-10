@@ -379,6 +379,133 @@ function setDynamicVhUnit() {
     setVh();
     window.addEventListener('resize', setVh);
 }
+// config: skill definitions (id must match filename prefix in content folder)
+const SKILLS = [
+  { id: "HTMLlogo", title: "HTML5", details: "<ul><li>Semantic markup</li><li>Accessibility</li></ul>" },
+  { id: "CSSlogo", title: "CSS3", details: "<ul><li>Responsive design</li><li>Advanced layouts</li></ul>" },
+  { id: "JavaScriptlogo", title: "JavaScript", details: "<ul><li>ES6+</li><li>Vanilla & frameworks</li></ul>" },
+  { id: "PHPlogo", title: "PHP", details: "<ul><li>Back-end scripts</li><li>CMS work</li></ul>" },
+  { id: "githubicon", title: "GitHub", details: "<ul><li>Repos & CI</li></ul>" }
+];
+
+// safety: path to assets
+const ICON_PATH = 'content/'; // adjust relative path in repo (content/HTMLlogo.png etc.)
+
+const container = document.querySelector('.floating-icons-container');
+const panel = document.querySelector('.skill-panel');
+const panelTitle = panel.querySelector('.skill-title');
+const panelBody = panel.querySelector('.skill-body');
+const closeBtn = panel.querySelector('.panel-close');
+const skillsInner = document.querySelector('.skills-inner');
+
+// helper to get container rect
+function rect(el){ return el.getBoundingClientRect(); }
+
+// create icons
+function initIcons() {
+  const cRect = rect(container);
+  SKILLS.forEach((s, i) => {
+    const node = document.createElement('div');
+    node.className = 'floating-icon anim';
+    node.dataset.skill = s.id;
+    node.style.setProperty('--delay', (i % 3) * 0.2);
+    // random initial position inside container (leaving some margin)
+    const margin = 12;
+    const left = Math.random() * (cRect.width - 120) + margin;
+    const top = Math.random() * (cRect.height - 120) + margin;
+    node.style.left = `${left}px`;
+    node.style.top = `${top}px`;
+
+    const img = document.createElement('img');
+    img.src = `${ICON_PATH}${s.id}.png`; // PNG or SVG; ensure file exists
+    img.alt = s.title;
+    node.appendChild(img);
+
+    node.addEventListener('click', e => openPanelFor(s, node));
+    container.appendChild(node);
+  });
+}
+
+// compute available zone and reposition icons to avoid panel area
+function layoutIconsAvoidingPanel(panelOpen = false) {
+  const icons = Array.from(container.querySelectorAll('.floating-icon'));
+  const cRect = rect(container);
+  const panelWidthPercent = getComputedStyle(document.documentElement).getPropertyValue('--panel-width').trim() || '0%';
+  // convert to px (panel sits left side)
+  const pw = parseFloat(panelWidthPercent) / 100 * cRect.width;
+  const occupiedLeft = panelOpen ? pw : 0;
+  const freeLeft = occupiedLeft;
+  const freeRight = cRect.width;
+
+  icons.forEach((ic, idx) => {
+    // get current positions
+    const w = ic.offsetWidth;
+    const h = ic.offsetHeight;
+    // prefer right side of panel: newLeft between occupiedLeft + 12 and freeRight - w -12
+    const minX = Math.max(12 + (panelOpen ? occupiedLeft : 12), 12);
+    const maxX = Math.max(cRect.width - w - 12, minX + 1);
+    // keep same vertical area but nudge if collision
+    let curTop = parseFloat(ic.style.top) || (Math.random() * (cRect.height - h));
+    // ensure top inside container
+    curTop = Math.max(8, Math.min(curTop, cRect.height - h - 8));
+    // compute a new left: if icon already inside the forbidden zone (left < occupiedLeft + 8) move it right
+    let curLeft = parseFloat(ic.style.left) || (Math.random() * (cRect.width - w));
+    if (panelOpen && curLeft < minX) {
+      // push right into available space with some scatter
+      curLeft = minX + (idx * 12) % (maxX - minX);
+    } else if (!panelOpen && curLeft > maxX) {
+      // if closed ensure inside full area
+      curLeft = Math.max(12, Math.min(curLeft, maxX));
+    }
+    ic.style.top = `${curTop}px`;
+    ic.style.left = `${curLeft}px`;
+  });
+}
+
+// open panel for skill
+function openPanelFor(skill, iconNode) {
+  panelTitle.textContent = skill.title;
+  panelBody.innerHTML = skill.details;
+  panel.setAttribute('aria-hidden', 'false');
+  skillsInner.classList.add('panel-open');
+  // set document var so CSS transforms and responsive logic can read it
+  document.documentElement.style.setProperty('--panel-open', 1);
+  // reposition icons to avoid panel area
+  layoutIconsAvoidingPanel(true);
+  // optionally animate the clicked icon into a pinned spot in the panel (visual cue)
+  if (iconNode) {
+    const iconRect = iconNode.getBoundingClientRect();
+    // we can scale up an image briefly; keep simple for now
+    iconNode.style.transform = 'scale(1.06)';
+    setTimeout(()=> iconNode.style.transform = '', 420);
+  }
+  panel.setAttribute('aria-hidden', 'false');
+}
+
+// close panel
+function closePanel() {
+  panel.setAttribute('aria-hidden', 'true');
+  skillsInner.classList.remove('panel-open');
+  document.documentElement.style.setProperty('--panel-open', 0);
+  // re-layout icons across full width
+  layoutIconsAvoidingPanel(false);
+}
+
+closeBtn.addEventListener('click', closePanel);
+
+// init on DOM ready
+document.addEventListener('DOMContentLoaded', () => {
+  initIcons();
+  // small delay to allow initial positions, then layout to safe positions
+  setTimeout(()=> layoutIconsAvoidingPanel(false), 350);
+
+  // optional: recompute layout on resize
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(()=> layoutIconsAvoidingPanel(panel.getAttribute('aria-hidden') === 'false'), 180);
+  });
+});
 
 // Add CSS for loading state
 const style = document.createElement('style');
