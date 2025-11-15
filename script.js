@@ -1,203 +1,12 @@
-// Language Management
-let currentLanguage = 'en';
-
-const translations = {
-    en: {
-        // Navigation
-        'Home': 'Home',
-        'About': 'About',
-        'Skills': 'Skills',
-        'Projects': 'Projects',
-        'Experience': 'Experience',
-        'Contact': 'Contact',
-        
-        // Hero Section
-        'Hossein Jafari Sharmi': 'Hossein Jafari Sharmi',
-        'UI/UX Designer & Full-Stack Developer': 'UI/UX Designer & Full-Stack Developer',
-        'Creating beautiful and functional digital experiences with a passion for innovation and user-centered design.': 'Creating beautiful and functional digital experiences with a passion for innovation and user-centered design.',
-        'View My Work': 'View My Work',
-        'Get In Touch': 'Get In Touch',
-        'Available for Projects': 'Available for Projects',
-        'Let\'s create something amazing together': 'Let\'s create something amazing together',
-        
-        // About Section
-        'About Me': 'About Me',
-        'Get to know me better': 'Get to know me better',
-        'My Story': 'My Story',
-        'I\'m a passionate UI/UX designer and developer with expertise in creating user-centered digital experiences. My journey spans across network design, software development, web design, and innovative AI-integrated hardware projects.': 'I\'m a passionate UI/UX designer and developer with expertise in creating user-centered digital experiences. My journey spans across network design, software development, web design, and innovative AI-integrated hardware projects.',
-        'Years Experience': 'Years Experience',
-        'Projects Completed': 'Projects Completed',
-        'Happy Clients': 'Happy Clients',
-        'Awards Won': 'Awards Won',
-        
-        // Skills Section
-        'My Skills': 'My Skills',
-        'Technologies and tools I work with': 'Technologies and tools I work with',
-        'UI/UX Design': 'UI/UX Design',
-        'Frontend Development': 'Frontend Development',
-        'Backend Development': 'Backend Development',
-        'Network Design': 'Network Design',
-        'AI & Hardware': 'AI & Hardware',
-        'Tools & Others': 'Tools & Others',
-        
-        // Projects Section
-        'Featured Projects': 'Featured Projects',
-        'Some of my recent work': 'Some of my recent work',
-        'E-Commerce Mobile App': 'E-Commerce Mobile App',
-        'A complete mobile shopping experience with intuitive UI/UX design and seamless payment integration.': 'A complete mobile shopping experience with intuitive UI/UX design and seamless payment integration.',
-        'Enterprise Network Solution': 'Enterprise Network Solution',
-        'Comprehensive network infrastructure design for a large corporation with advanced security features.': 'Comprehensive network infrastructure design for a large corporation with advanced security features.',
-        'AI-Powered IoT System': 'AI-Powered IoT System',
-        'Smart home automation system with machine learning capabilities for energy optimization.': 'Smart home automation system with machine learning capabilities for energy optimization.',
-        
-        // Experience Section
-        'Work Experience': 'Work Experience',
-        'My professional journey': 'My professional journey',
-        'Senior UI/UX Designer': 'Senior UI/UX Designer',
-        'Tech Innovations Inc.': 'Tech Innovations Inc.',
-        'Leading design teams and creating user-centered digital experiences for enterprise clients. Specialized in mobile app design and web interfaces.': 'Leading design teams and creating user-centered digital experiences for enterprise clients. Specialized in mobile app design and web interfaces.',
-        'Full-Stack Developer': 'Full-Stack Developer',
-        'Digital Solutions Co.': 'Digital Solutions Co.',
-        'Developed and maintained web applications using modern technologies. Collaborated with cross-functional teams to deliver high-quality software solutions.': 'Developed and maintained web applications using modern technologies. Collaborated with cross-functional teams to deliver high-quality software solutions.',
-        'Network Engineer': 'Network Engineer',
-        'Infrastructure Systems Ltd.': 'Infrastructure Systems Ltd.',
-        'Designed and implemented network infrastructure solutions for various clients. Focused on security, scalability, and performance optimization.': 'Designed and implemented network infrastructure solutions for various clients. Focused on security, scalability, and performance optimization.',
-        
-        // Contact Section
-        'Get In Touch': 'Get In Touch',
-        'Let\'s work together on your next project': 'Let\'s work together on your next project',
-        'Email': 'Email',
-        'Phone': 'Phone',
-        'Location': 'Location',
-        'Tehran, Iran': 'Tehran, Iran',
-        'Your Name': 'Your Name',
-        'Your Email': 'Your Email',
-        'Subject': 'Subject',
-        'Your Message': 'Your Message',
-        'Send Message': 'Send Message'
-    },
-    fa: {
-        // Navigation
-        'Home': 'خانه',
-        'About': 'درباره من',
-        'Skills': 'مهارت‌ها',
-        'Projects': 'پروژه‌ها',
-        'Experience': 'تجربه',
-        'Contact': 'تماس',
-        
-        // Hero Section
-        'Hossein Jafari Sharmi': 'حسین جعفری شارمی',
-        'UI/UX Designer & Full-Stack Developer': 'طراح UI/UX و توسعه‌دهنده فول‌استک',
-        'Creating beautiful and functional digital experiences with a passion for innovation and user-centered design.': 'ایجاد تجربیات دیجیتال زیبا و کاربردی با اشتیاق برای نوآوری و طراحی متمرکز بر کاربر.',
-        'View My Work': 'مشاهده کارهایم',
-        'Get In Touch': 'تماس با من',
-        'Available for Projects': 'آماده برای پروژه‌ها',
-        'Let\'s create something amazing together': 'بیایید چیزی شگفت‌انگیز خلق کنیم',
-        
-        // About Section
-        'About Me': 'درباره من',
-        'Get to know me better': 'بیشتر با من آشنا شوید',
-        'My Story': 'داستان من',
-        'I\'m a passionate UI/UX designer and developer with expertise in creating user-centered digital experiences. My journey spans across network design, software development, web design, and innovative AI-integrated hardware projects.': 'من یک طراح و توسعه‌دهنده UI/UX پرشور هستم که در ایجاد تجربیات دیجیتال متمرکز بر کاربر تخصص دارم. سفر من شامل طراحی شبکه، توسعه نرم‌افزار، طراحی وب و پروژه‌های سخت‌افزاری نوآورانه با هوش مصنوعی می‌شود.',
-        'Years Experience': 'سال تجربه',
-        'Projects Completed': 'پروژه تکمیل شده',
-        'Happy Clients': 'مشتری راضی',
-        'Awards Won': 'جایزه دریافت شده',
-        
-        // Skills Section
-        'My Skills': 'مهارت‌های من',
-        'Technologies and tools I work with': 'فناوری‌ها و ابزارهایی که با آن‌ها کار می‌کنم',
-        'UI/UX Design': 'طراحی UI/UX',
-        'Frontend Development': 'توسعه فرانت‌اند',
-        'Backend Development': 'توسعه بک‌اند',
-        'Network Design': 'طراحی شبکه',
-        'AI & Hardware': 'هوش مصنوعی و سخت‌افزار',
-        'Tools & Others': 'ابزارها و سایر',
-        
-        // Projects Section
-        'Featured Projects': 'پروژه‌های برجسته',
-        'Some of my recent work': 'برخی از کارهای اخیر من',
-        'E-Commerce Mobile App': 'اپلیکیشن موبایل تجارت الکترونیک',
-        'A complete mobile shopping experience with intuitive UI/UX design and seamless payment integration.': 'تجربه خرید موبایل کامل با طراحی UI/UX بصری و ادغام پرداخت بی‌نقص',
-        'Enterprise Network Solution': 'راه‌حل شبکه سازمانی',
-        'Comprehensive network infrastructure design for a large corporation with advanced security features.': 'طراحی زیرساخت شبکه جامع برای یک شرکت بزرگ با ویژگی‌های امنیتی پیشرفته',
-        'AI-Powered IoT System': 'سیستم IoT با هوش مصنوعی',
-        'Smart home automation system with machine learning capabilities for energy optimization.': 'سیستم اتوماسیون خانه هوشمند با قابلیت‌های یادگیری ماشین برای بهینه‌سازی انرژی',
-        
-        // Experience Section
-        'Work Experience': 'تجربه کاری',
-        'My professional journey': 'سفر حرفه‌ای من',
-        'Senior UI/UX Designer': 'طراح ارشد UI/UX',
-        'Tech Innovations Inc.': 'شرکت نوآوری‌های فناوری',
-        'Leading design teams and creating user-centered digital experiences for enterprise clients. Specialized in mobile app design and web interfaces.': 'رهبری تیم‌های طراحی و ایجاد تجربیات دیجیتال متمرکز بر کاربر برای مشتریان سازمانی. تخصص در طراحی اپلیکیشن موبایل و رابط‌های وب',
-        'Full-Stack Developer': 'توسعه‌دهنده فول‌استک',
-        'Digital Solutions Co.': 'شرکت راه‌حل‌های دیجیتال',
-        'Developed and maintained web applications using modern technologies. Collaborated with cross-functional teams to deliver high-quality software solutions.': 'توسعه و نگهداری اپلیکیشن‌های وب با استفاده از فناوری‌های مدرن. همکاری با تیم‌های چندمنظوره برای ارائه راه‌حل‌های نرم‌افزاری با کیفیت بالا',
-        'Network Engineer': 'مهندس شبکه',
-        'Infrastructure Systems Ltd.': 'شرکت سیستم‌های زیرساخت',
-        'Designed and implemented network infrastructure solutions for various clients. Focused on security, scalability, and performance optimization.': 'طراحی و پیاده‌سازی راه‌حل‌های زیرساخت شبکه برای مشتریان مختلف. تمرکز بر امنیت، مقیاس‌پذیری و بهینه‌سازی عملکرد',
-        
-        // Contact Section
-        'Get In Touch': 'تماس با من',
-        'Let\'s work together on your next project': 'بیایید روی پروژه بعدی شما با هم کار کنیم',
-        'Email': 'ایمیل',
-        'Phone': 'تلفن',
-        'Location': 'موقعیت',
-        'Tehran, Iran': 'تهران، ایران',
-        'Your Name': 'نام شما',
-        'Your Email': 'ایمیل شما',
-        'Subject': 'موضوع',
-        'Your Message': 'پیام شما',
-        'Send Message': 'ارسال پیام'
-    }
-};
-
-// DOM Elements
-const langBtn = document.getElementById('langBtn');
-const langText = document.querySelector('.lang-text');
-
-// Initialize
+// Initialize core interactions
 document.addEventListener('DOMContentLoaded', function() {
     initializeAnimations();
-    setupLanguageToggle();
     setupSmoothScrolling();
+    setupActiveSectionTracking();
     setupFormHandling();
-    updateLanguageButton();
     setupMobileNav();
     setDynamicVhUnit();
 });
-
-// Language Toggle Functionality
-function setupLanguageToggle() {
-    langBtn.addEventListener('click', function() {
-        currentLanguage = currentLanguage === 'en' ? 'fa' : 'en';
-        updateLanguage();
-        updateLanguageButton();
-    });
-}
-
-function updateLanguage() {
-    const elements = document.querySelectorAll('[data-en]');
-    
-    elements.forEach(element => {
-        const key = element.getAttribute('data-en');
-        if (translations[currentLanguage][key]) {
-            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                element.placeholder = translations[currentLanguage][key];
-            } else {
-                element.textContent = translations[currentLanguage][key];
-            }
-        }
-    });
-    
-    // Update document direction for RTL
-    document.documentElement.dir = currentLanguage === 'fa' ? 'rtl' : 'ltr';
-    document.documentElement.lang = currentLanguage;
-}
-
-function updateLanguageButton() {
-    langText.textContent = currentLanguage === 'en' ? 'فارسی' : 'ENG';
-}
 
 // Animation System
 function initializeAnimations() {
@@ -253,6 +62,41 @@ function setupSmoothScrolling() {
             }
         });
     });
+}
+
+// Active link tracking
+function setupActiveSectionTracking() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = Array.from(document.querySelectorAll('.nav-link'));
+    if (!sections.length || !navLinks.length) return;
+
+    const linkMap = navLinks.reduce((acc, link) => {
+        const href = link.getAttribute('href') || '';
+        if (href.startsWith('#')) {
+            acc[href.substring(1)] = link;
+        }
+        return acc;
+    }, {});
+
+    let activeId = null;
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.id;
+                if (activeId === id) return;
+                activeId = id;
+                navLinks.forEach(link => link.classList.remove('is-active'));
+                if (linkMap[id]) {
+                    linkMap[id].classList.add('is-active');
+                }
+            }
+        });
+    }, {
+        threshold: 0.45,
+        rootMargin: '-10% 0px -10% 0px'
+    });
+
+    sections.forEach(section => observer.observe(section));
 }
 
 // Mobile nav toggle
@@ -379,23 +223,57 @@ function setDynamicVhUnit() {
     setVh();
     window.addEventListener('resize', setVh);
 }
-// config: skill definitions (id must match filename prefix in content folder)
+// config: skill definitions
 const SKILLS = [
-  { id: "HTMLlogo", title: "HTML5", details: "<ul><li>Semantic markup</li><li>Accessibility</li></ul>" },
-  { id: "CSSlogo", title: "CSS3", details: "<ul><li>Responsive design</li><li>Advanced layouts</li></ul>" },
-  { id: "JavaScriptlogo", title: "JavaScript", details: "<ul><li>ES6+</li><li>Vanilla & frameworks</li></ul>" },
-  { id: "PHPlogo", title: "PHP", details: "<ul><li>Back-end scripts</li><li>CMS work</li></ul>" },
-  { id: "githubicon", title: "GitHub", details: "<ul><li>Repos & CI</li></ul>" }
+  {
+    id: "html",
+    title: "HTML5",
+    icon: "fa-brands fa-html5",
+    color: "linear-gradient(135deg, #ff9966, #ff5e62)",
+    details: "<ul><li>Semantic markup</li><li>Accessibility patterns</li></ul>"
+  },
+  {
+    id: "css",
+    title: "CSS3",
+    icon: "fa-brands fa-css3-alt",
+    color: "linear-gradient(135deg, #56ccf2, #2f80ed)",
+    details: "<ul><li>Responsive design</li><li>Advanced layouts</li></ul>"
+  },
+  {
+    id: "javascript",
+    title: "JavaScript",
+    icon: "fa-brands fa-js",
+    color: "linear-gradient(135deg, #fddb92, #d1fdff)",
+    details: "<ul><li>ES6+</li><li>Vanilla & frameworks</li></ul>"
+  },
+  {
+    id: "php",
+    title: "PHP",
+    icon: "fa-brands fa-php",
+    color: "linear-gradient(135deg, #8e9eab, #eef2f3)",
+    details: "<ul><li>Back-end scripts</li><li>CMS work</li></ul>"
+  },
+  {
+    id: "wordpress",
+    title: "WordPress",
+    icon: "fa-brands fa-wordpress",
+    color: "linear-gradient(135deg, #0087be, #00c0ff)",
+    details: "<ul><li>Headless & classic builds</li><li>Custom themes & blocks</li></ul>"
+  },
+  {
+    id: "github",
+    title: "GitHub",
+    icon: "fa-brands fa-github",
+    color: "linear-gradient(135deg, #7f7fd5, #86a8e7)",
+    details: "<ul><li>Repos & CI</li><li>Code reviews</li></ul>"
+  }
 ];
-
-// safety: path to assets
-const ICON_PATH = 'content/'; // adjust relative path in repo (content/HTMLlogo.png etc.)
 
 const container = document.querySelector('.floating-icons-container');
 const panel = document.querySelector('.skill-panel');
-const panelTitle = panel.querySelector('.skill-title');
-const panelBody = panel.querySelector('.skill-body');
-const closeBtn = panel.querySelector('.panel-close');
+const panelTitle = panel ? panel.querySelector('.skill-title') : null;
+const panelBody = panel ? panel.querySelector('.skill-body') : null;
+const closeBtn = panel ? panel.querySelector('.panel-close') : null;
 const skillsInner = document.querySelector('.skills-inner');
 
 // helper to get container rect
@@ -403,67 +281,65 @@ function rect(el){ return el.getBoundingClientRect(); }
 
 // create icons
 function initIcons() {
-  const cRect = rect(container);
+  if (!container) return;
+  container.innerHTML = '';
   SKILLS.forEach((s, i) => {
     const node = document.createElement('div');
     node.className = 'floating-icon anim';
     node.dataset.skill = s.id;
     node.style.setProperty('--delay', (i % 3) * 0.2);
-    // random initial position inside container (leaving some margin)
-    const margin = 12;
-    const left = Math.random() * (cRect.width - 120) + margin;
-    const top = Math.random() * (cRect.height - 120) + margin;
-    node.style.left = `${left}px`;
-    node.style.top = `${top}px`;
+    node.style.setProperty('--icon-bg', s.color || 'rgba(255,255,255,0.08)');
+    node.setAttribute('aria-label', s.title);
 
-    const img = document.createElement('img');
-    img.src = `${ICON_PATH}${s.id}.png`; // PNG or SVG; ensure file exists
-    img.alt = s.title;
-    node.appendChild(img);
+    const icon = document.createElement('i');
+    icon.className = s.icon;
+    node.appendChild(icon);
 
-    node.addEventListener('click', e => openPanelFor(s, node));
+    node.addEventListener('click', () => openPanelFor(s, node));
     container.appendChild(node);
   });
 }
 
 // compute available zone and reposition icons to avoid panel area
 function layoutIconsAvoidingPanel(panelOpen = false) {
+  if (!container) return;
   const icons = Array.from(container.querySelectorAll('.floating-icon'));
+  if (!icons.length) return;
   const cRect = rect(container);
-  const panelWidthPercent = getComputedStyle(document.documentElement).getPropertyValue('--panel-width').trim() || '0%';
-  // convert to px (panel sits left side)
-  const pw = parseFloat(panelWidthPercent) / 100 * cRect.width;
-  const occupiedLeft = panelOpen ? pw : 0;
-  const freeLeft = occupiedLeft;
-  const freeRight = cRect.width;
+  const rootStyles = getComputedStyle(document.documentElement);
+  const panelPercent = parseFloat(rootStyles.getPropertyValue('--panel-width')) || 0;
+  const iconSize = parseFloat(rootStyles.getPropertyValue('--icon-size')) || 68;
+  const padding = 40;
+  const isNarrowPanel = window.matchMedia('(max-width: 720px)').matches;
+  const horizontalOffset = panelOpen && !isNarrowPanel ? (panelPercent / 100) * cRect.width : 0;
+  const verticalReduction = panelOpen && isNarrowPanel ? (panelPercent / 100) * cRect.height : 0;
+  const panelOffset = panelOpen && !isNarrowPanel ? horizontalOffset + 24 : padding;
+  const availableWidth = Math.max(iconSize, cRect.width - panelOffset - padding);
+  const columns = Math.max(1, Math.min(icons.length, Math.floor(availableWidth / (iconSize + padding)) || 1));
+  const rows = Math.max(1, Math.ceil(icons.length / columns));
+  const heightSpan = Math.max(iconSize, cRect.height - verticalReduction - padding * 2);
+  const layoutWidth = Math.min(availableWidth, columns * iconSize + Math.max(0, columns - 1) * padding);
+  const layoutHeight = Math.min(heightSpan, rows * iconSize + Math.max(0, rows - 1) * padding);
+  const horizontalStart = panelOffset + Math.max(0, (availableWidth - layoutWidth) / 2);
+  const verticalStart = padding + Math.max(0, (heightSpan - layoutHeight) / 2);
+  const colSpacing = columns > 1 ? (layoutWidth - iconSize) / (columns - 1) : 0;
+  const rowSpacing = rows > 1 ? (layoutHeight - iconSize) / (rows - 1) : 0;
 
   icons.forEach((ic, idx) => {
-    // get current positions
-    const w = ic.offsetWidth;
-    const h = ic.offsetHeight;
-    // prefer right side of panel: newLeft between occupiedLeft + 12 and freeRight - w -12
-    const minX = Math.max(12 + (panelOpen ? occupiedLeft : 12), 12);
-    const maxX = Math.max(cRect.width - w - 12, minX + 1);
-    // keep same vertical area but nudge if collision
-    let curTop = parseFloat(ic.style.top) || (Math.random() * (cRect.height - h));
-    // ensure top inside container
-    curTop = Math.max(8, Math.min(curTop, cRect.height - h - 8));
-    // compute a new left: if icon already inside the forbidden zone (left < occupiedLeft + 8) move it right
-    let curLeft = parseFloat(ic.style.left) || (Math.random() * (cRect.width - w));
-    if (panelOpen && curLeft < minX) {
-      // push right into available space with some scatter
-      curLeft = minX + (idx * 12) % (maxX - minX);
-    } else if (!panelOpen && curLeft > maxX) {
-      // if closed ensure inside full area
-      curLeft = Math.max(12, Math.min(curLeft, maxX));
-    }
-    ic.style.top = `${curTop}px`;
-    ic.style.left = `${curLeft}px`;
+    const col = idx % columns;
+    const row = Math.floor(idx / columns);
+    const left = horizontalStart + col * colSpacing;
+    ic.style.left = `${Math.min(left, cRect.width - iconSize - padding)}px`;
+
+    const topBase = verticalStart + row * rowSpacing;
+    const maxTop = cRect.height - iconSize - padding - verticalReduction;
+    ic.style.top = `${Math.min(topBase, Math.max(padding, maxTop))}px`;
   });
 }
 
 // open panel for skill
 function openPanelFor(skill, iconNode) {
+  if (!panel || !panelTitle || !panelBody || !skillsInner) return;
   panelTitle.textContent = skill.title;
   panelBody.innerHTML = skill.details;
   panel.setAttribute('aria-hidden', 'false');
@@ -484,6 +360,7 @@ function openPanelFor(skill, iconNode) {
 
 // close panel
 function closePanel() {
+  if (!panel || !skillsInner) return;
   panel.setAttribute('aria-hidden', 'true');
   skillsInner.classList.remove('panel-open');
   document.documentElement.style.setProperty('--panel-open', 0);
@@ -491,10 +368,13 @@ function closePanel() {
   layoutIconsAvoidingPanel(false);
 }
 
-closeBtn.addEventListener('click', closePanel);
+if (closeBtn) {
+  closeBtn.addEventListener('click', closePanel);
+}
 
 // init on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
+  if (!container) return;
   initIcons();
   // small delay to allow initial positions, then layout to safe positions
   setTimeout(()=> layoutIconsAvoidingPanel(false), 350);
@@ -503,7 +383,10 @@ document.addEventListener('DOMContentLoaded', () => {
   let resizeTimer;
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(()=> layoutIconsAvoidingPanel(panel.getAttribute('aria-hidden') === 'false'), 180);
+    resizeTimer = setTimeout(() => {
+      const isOpen = panel ? panel.getAttribute('aria-hidden') === 'false' : false;
+      layoutIconsAvoidingPanel(isOpen);
+    }, 180);
   });
 });
 
